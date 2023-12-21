@@ -7,13 +7,16 @@ form.addEventListener("submit", async function (event) {
   const formValues = Object.fromEntries(formData);
 
   // send the joke to the API
-  const response = await fetch("http://localhost:8080/jokes", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formValues),
-  });
+  const response = await fetch(
+    "https://test-server-db-olyo.onrender.com/jokes",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formValues),
+    }
+  );
   const json = await response.json();
 
   console.log(json);
@@ -21,7 +24,9 @@ form.addEventListener("submit", async function (event) {
 
 async function getJokes() {
   // get the jokes from our Database via our API
-  const response = await fetch("http://localhost:8080/jokes");
+  const response = await fetch(
+    "https://test-server-db-olyo.onrender.com/jokes"
+  );
   const jokes = await response.json();
 
   // loop through the jokes and render them on the page
